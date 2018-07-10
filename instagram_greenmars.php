@@ -143,6 +143,7 @@ class InstagramData {
 			  		$posts['COUNTS']['FOLLOWS'] = $user['follows_count'];
 			  		$posts['COUNTS']['FOLLOWED_BY'] = $user['followers_count'];
 			  		$posts['NAME'] = $user['name'];
+			  		$posts['USERNAME'] = $user['username'];
 			  		$posts['LINK'] = 'https://www.instagram.com/'.$user['username'].'/';
 			  		$posts['PROFILE_PICTURE'] = $user['profile_picture_url'];
 			  	}
