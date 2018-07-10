@@ -24,7 +24,7 @@ class InstagramData {
 		if ( !$app_id || !$token )
 			return false;
 		$posts = get_transient( 'instagram_posts' );
-
+		
 		if(!$posts) {
 			$posts = array();
 		    $count = 0;
@@ -84,7 +84,7 @@ class InstagramData {
 	        foreach($media as $key => $image) {
 	        	if($key == 9)
 	        		break;
-	        	$url = 'https://graph.facebook.com/v3.0/'.$image['id'].'?fields=id,media_type,media_url,owner,timestamp,permalink,thumbnail_url,caption&access_token='.$token;
+	        	$url = 'https://graph.facebook.com/v3.0/'.$image['id'].'?fields=id,media_type,media_url,owner,timestamp,permalink,thumbnail_url,caption,like_count&access_token='.$token;
 
 	        	$curl_base_options = [
 		            CURLOPT_URL => $url,
@@ -113,6 +113,8 @@ class InstagramData {
 
 		        	$item['link'] = $answer['permalink'];
 		        	$item['alt'] = $answer['caption'];
+		        	$item['likes'] = $answer['like_count'];
+		        	$item['timestamp'] = $answer['timestamp'];
 		        	$posts['ITEMS'][] = $item;
 		        }
 	        }
